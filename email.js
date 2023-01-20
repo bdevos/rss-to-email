@@ -3,6 +3,8 @@ import { createServer as createViteServer } from 'vite'
 
 const outputDir = './dist'
 
+const getFromArgv = (key) => process.argv.find((arg) => arg.startsWith(`${key}=`))?.replaceAll(`${key}=`, '')
+
 async function createEmail() {
   const vite = await createViteServer({
     appType: 'custom',
@@ -13,7 +15,7 @@ async function createEmail() {
   try {
     const { renderEmail } = await vite.ssrLoadModule('/src/renderEmail.tsx')
 
-    const { html, itemCount } = await renderEmail({ cron })
+    const { html, itemCount } = await renderEmail({ cron, actionUrl: getFromArgv('actionUrl') })
 
     if (itemCount === 0) {
       console.log('No new items in feed, skipping email')

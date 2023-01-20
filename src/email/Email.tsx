@@ -13,9 +13,10 @@ import { CustomItem } from '../renderEmail'
 interface Props {
   feeds: Output<CustomItem>[]
   itemCount: number
+  actionUrl?: string
 }
 
-export default function Email({ feeds, itemCount }: Props) {
+export default function Email({ feeds, itemCount, actionUrl }: Props) {
   return (
     <Html>
       <Head />
@@ -32,9 +33,11 @@ export default function Email({ feeds, itemCount }: Props) {
 
           <Section style={section}>
             <Text style={sectionText}>
-              <Link style={link} href="https://appjeniksaan.nl">
-                {formatDate(new Date().toISOString())}
-              </Link>
+              {actionUrl && (
+                <Link style={link} href={actionUrl}>
+                  {formatDate(new Date().toISOString())}
+                </Link>
+              )}
             </Text>
           </Section>
         </Container>
