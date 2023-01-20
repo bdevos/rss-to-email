@@ -30,12 +30,13 @@ const parser: Parser = new Parser<{}, CustomItem>({
 })
 
 interface Props {
-  pretty?: boolean
+  actionUrl?: string
   cron?: string
   limit?: number
+  pretty?: boolean
 }
 
-export async function renderEmail({ pretty = false, cron, limit }: Props) {
+export async function renderEmail({ pretty = false, cron, limit, actionUrl }: Props) {
   const earliestDate = cronToEarliestDate(cron)
 
   const settledFeeds = await Promise.allSettled(feeds.map((feed) => parser.parseURL(feed)))
@@ -54,7 +55,7 @@ export async function renderEmail({ pretty = false, cron, limit }: Props) {
 
   const itemCount = getItemCount(filteredFeeds)
 
-  const html = render(<Email feeds={filteredFeeds} itemCount={itemCount} />, {
+  const html = render(<Email feeds={filteredFeeds} itemCount={itemCount} actionUrl={actionUrl} />, {
     pretty,
   })
 
