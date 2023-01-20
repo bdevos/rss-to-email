@@ -16,6 +16,10 @@ jobs:
       - run: npm ci
       - run: npm run email
 
+      - name: Echo GHA url
+        run: echo ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        shell: bash
+
       - name: File Existence
         id: check_email
         uses: andstor/file-existence-action@v2.0.0
