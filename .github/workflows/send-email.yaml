@@ -1,0 +1,28 @@
+name: Send email
+
+on:
+  schedule:
+    - cron: '0/10 * * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+
+      - run: npm ci
+      - run: npm run email
+
+      - name: File Existence
+        id: check_email
+        uses: andstor/file-existence-action@v2.0.0
+        with:
+    `     files: 'dist/email.html'
+
+      - name: File exists
+        if: steps.check_email.outputs.files_exists == 'true'
+        # Only runs if all of the files exists
+        run: echo All files exists!
