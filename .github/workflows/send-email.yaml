@@ -15,13 +15,6 @@ jobs:
         with:
           cache: 'npm'
 
-      - name: Create .env file
-        uses: SpicyPizza/create-envfile@v1.3.0
-        with:
-          envkey_DEBUG: false
-          envkey_SOME_API_KEY: '123456abcdef'
-          envkey_SECRET_KEY: ${{ secrets.SECRET_KEY }}
-
       - run: npm ci
       - run: npm run email -- actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 
