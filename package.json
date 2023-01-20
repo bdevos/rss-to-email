@@ -1,0 +1,41 @@
+{
+  "name": "rss-to-email-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node server",
+    "email": "node email",
+    "build": "tsc && vite build",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@react-email/button": "^0.0.4",
+    "@react-email/container": "^0.0.4",
+    "@react-email/head": "^0.0.2",
+    "@react-email/heading": "^0.0.5",
+    "@react-email/hr": "^0.0.2",
+    "@react-email/html": "^0.0.2",
+    "@react-email/img": "^0.0.2",
+    "@react-email/link": "^0.0.2",
+    "@react-email/preview": "^0.0.2",
+    "@react-email/render": "0.0.6",
+    "@react-email/section": "^0.0.1",
+    "@react-email/text": "^0.0.2",
+    "cron-parser": "^4.7.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.7.0",
+    "rss-parser": "^3.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "express": "^4.18.2",
+    "nodemailer": "^6.9.0",
+    "prettier": "2.8.3",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0"
+  }
+}
