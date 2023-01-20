@@ -20,7 +20,7 @@ jobs:
         id: check_email
         uses: andstor/file-existence-action@v2.0.0
         with:
-    `     files: 'dist/email.html'
+          files: 'dist/email.html'
 
       - name: File exists
         if: steps.check_email.outputs.files_exists == 'true'
