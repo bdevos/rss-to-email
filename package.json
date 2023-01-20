@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server",
     "email": "node email",
-    "build": "tsc && vite build",
+    "build": "prettier --check . && tsc",
     "format": "prettier --write ."
   },
   "dependencies": {
