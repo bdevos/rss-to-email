@@ -22,7 +22,18 @@ jobs:
         with:
           files: 'dist/email.html'
 
-      - name: File exists
+      - name: Send email
         if: steps.check_email.outputs.files_exists == 'true'
-        # Only runs if all of the files exists
-        run: echo All files exists!
+        uses: dawidd6/action-send-mail@v3.7.1
+        with:
+          server_address: smtp.fastmail.com
+          server_port: 587
+
+          username: ${{secrets.MAIL_USERNAME}}
+          password: ${{secrets.MAIL_PASSWORD}}
+
+          subject: RSS to Email
+          to: ${{secrets.MAIL_TO}}
+          from: ${{secrets.MAIL_USERNAME}}
+
+          html_body: file://dist/email.html
