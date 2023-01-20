@@ -10,12 +10,13 @@ async function createEmail() {
     appType: 'custom',
   })
 
-  const cron = '0 7 * * *'
+  const actionUrl = getFromArgv('actionUrl')
+  const cron = getFromArgv('cron') || '0 7 * * *'
 
   try {
     const { renderEmail } = await vite.ssrLoadModule('/src/renderEmail.tsx')
 
-    const { html, itemCount } = await renderEmail({ cron, actionUrl: getFromArgv('actionUrl') })
+    const { html, itemCount } = await renderEmail({ cron, actionUrl })
 
     if (itemCount === 0) {
       console.log('No new items in feed, skipping email')
