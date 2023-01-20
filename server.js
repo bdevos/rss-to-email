@@ -4,6 +4,8 @@ import { fileURLToPath } from 'url'
 import express from 'express'
 import { createServer as createViteServer } from 'vite'
 
+const port = 5173
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function createServer() {
@@ -20,9 +22,11 @@ async function createServer() {
     try {
       const { renderEmail } = await vite.ssrLoadModule('/src/renderEmail.tsx')
 
-      const { html } = await renderEmail({ pretty: true, cron: '0 7 * * *' })
-
-      // const { html } = await renderEmail({ pretty: true, limit: 3 })
+      const { html } = await renderEmail({
+        pretty: true,
+        // cron: '0 7 * * *', // Limit to the time period from previous to next cron job running
+        limit: 3, // Limit to the last n posts of every feed in feeds.ts
+      })
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
@@ -45,9 +49,9 @@ async function createServer() {
     }
   })
 
-  app.listen(5173)
+  app.listen(port)
 
-  console.log('Preview started on: http://localhost:5173')
+  console.log(`Preview started on: http://localhost:${port}`)
 }
 
 createServer()
