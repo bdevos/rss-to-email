@@ -2,7 +2,7 @@ name: Send email
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '0 7 * * *'
 
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
           cache: 'npm'
 
       - run: npm ci
-      - run: npm run email -- actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} cron='0 * * * *'
+      - run: npm run email -- actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} cron='0 7 * * *'
 
       - name: File Existence
         id: check_email
