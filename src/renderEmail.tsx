@@ -40,26 +40,26 @@ interface Props {
 }
 
 const parseLastSuccess = (lastSuccess: string | undefined) => {
-  if (lastSuccess) {
-    const parsed = dayjs(lastSuccess)
-
-    if (parsed.isValid()) {
-      return {
-        from: parsed,
-        initialRun: false,
-      }
+  if (!lastSuccess || lastSuccess.trim() === '') {
+    return {
+      from: dayjs().subtract(7, 'days'),
+      initialRun: true,
     }
   }
 
-  return {
-    from: dayjs().subtract(7, 'days'),
-    initialRun: true,
+  const parsed = dayjs(lastSuccess)
+
+  if (parsed.isValid()) {
+    return {
+      from: parsed,
+      initialRun: false,
+    }
   }
+
+  throw new Error(`Unknown lastSuccess value: ${lastSuccess}`)
 }
 
-const parseFeeds = async (lastSuccess: string | undefined, limit?: number) => {
-  const { from, initialRun } = parseLastSuccess(lastSuccess)
-
+const parseFeeds = async (from: dayjs.Dayjs, limit: number | undefined) => {
   const settledFeeds = await Promise.allSettled(feeds.map((feed) => parser.parseURL(feed)))
 
   const fulfilledFeeds = settledFeeds.reduce((acc, current, i) => {
@@ -72,11 +72,13 @@ const parseFeeds = async (lastSuccess: string | undefined, limit?: number) => {
     }
   }, [] as Output<CustomItem>[])
 
-  return filterItemsFromFeed(fulfilledFeeds, from, limit ?? initialRun ? ITEMS_ON_INITIAL_RUN : undefined)
+  return filterItemsFromFeed(fulfilledFeeds, from, limit)
 }
 
 export async function renderEmail({ actionUrl, cache, lastSuccess, limit, pretty = false }: Props) {
-  const parsedFeeds = cache ?? (await parseFeeds(lastSuccess, limit))
+  const { from, initialRun } = parseLastSuccess(lastSuccess)
+
+  const parsedFeeds = cache ?? (await parseFeeds(from, limit ?? initialRun ? ITEMS_ON_INITIAL_RUN : undefined))
 
   const itemCount = getItemCount(parsedFeeds)
 
