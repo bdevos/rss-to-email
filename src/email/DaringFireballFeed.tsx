@@ -1,6 +1,6 @@
+import { Container } from '@react-email/container'
 import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
-import { Section } from '@react-email/section'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
 import { CustomItem, ItemLink } from '../renderEmail'
@@ -13,26 +13,26 @@ const findRelatedLink = (links: ItemLink[]) => links.map(({ $: link }) => link).
 
 export default ({ feed }: Props) => {
   return (
-    <Section style={box}>
+    <Container style={box}>
       <Link href={feed.link}>
         <Img src="https://daringfireball.net/graphics/logos/" style={logo} />
       </Link>
       {feed.items.map((item) => (
-        <Section key={item.guid ?? item.id} style={section}>
+        <Container key={item.guid ?? item.id} style={section}>
           <Text style={title}>
             <Link style={titleLink} href={findRelatedLink(item.links) ?? item.link}>
               {item.title}
             </Link>
           </Text>
           <Text style={content}>{item.contentSnippet?.replaceAll('★', '')}</Text>
-        </Section>
+        </Container>
       ))}
-    </Section>
+    </Container>
   )
 }
 
 const box = {
-  padding: '48px 32px 16px 17px',
+  padding: '48px 48px 16px 33px',
   backgroundColor: '#4a525a',
 }
 

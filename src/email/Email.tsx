@@ -9,6 +9,8 @@ import { Output } from 'rss-parser'
 import FeedSwitch from './FeedSwitch'
 import { formatDate } from '../utils/formatter'
 import { CustomItem } from '../renderEmail'
+import { Heading } from '@react-email/heading'
+import { Column } from '@react-email/column'
 
 interface Props {
   feeds: Output<CustomItem>[]
@@ -23,23 +25,19 @@ export default function Email({ feeds, itemCount, actionUrl }: Props) {
       <Preview children={`RSS to Email with ${itemCount} updates`} />
       <Section style={main}>
         <Container style={container}>
-          <Section style={section}>
-            <Text style={sectionText}>RSS to Email with {itemCount} updates</Text>
-          </Section>
+          <Text style={sectionText}>RSS to Email with {itemCount} updates</Text>
 
           {feeds.map((feed, i) => (
             <FeedSwitch key={feed.link} feed={feed} hasBottomSeparator={i < feeds.length - 1} />
           ))}
 
-          <Section style={section}>
-            <Text style={sectionText}>
-              {actionUrl && (
-                <Link style={link} href={actionUrl}>
-                  {formatDate(new Date().toISOString())}
-                </Link>
-              )}
-            </Text>
-          </Section>
+          <Text style={sectionText}>
+            {actionUrl && (
+              <Link style={link} href={actionUrl}>
+                {formatDate(new Date().toISOString())}
+              </Link>
+            )}
+          </Text>
         </Container>
       </Section>
     </Html>
@@ -56,10 +54,7 @@ const container = {
   padding: '0',
 }
 
-const section = {
-  padding: '16px 48px',
-  backgroundColor: '#e9ecef',
-}
+const section = {}
 
 const sectionText = {
   color: '#495057',
@@ -67,6 +62,8 @@ const sectionText = {
   fontSize: '12px',
   textAlign: 'center' as const,
   margin: '0',
+  padding: '16px 48px',
+  backgroundColor: '#e9ecef',
 }
 
 const link = {

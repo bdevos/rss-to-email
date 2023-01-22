@@ -1,3 +1,4 @@
+import { Container } from '@react-email/container'
 import { Hr } from '@react-email/hr'
 import { Link } from '@react-email/link'
 import { Section } from '@react-email/section'
@@ -13,27 +14,27 @@ interface Props {
 
 export default ({ feed, hasBottomSeparator }: Props) => {
   return (
-    <Section style={box} key={feed.link}>
+    <Container style={box}>
       <Text style={header}>
         <Link style={headerLink} href={feed.link}>
           {feed.title}
         </Link>
       </Text>
       {feed.items.map((item) => (
-        <Section key={item.guid} style={section}>
+        <Container key={item.guid} style={section}>
           <Link style={anchor} href={item.link}>
             {item.title}
           </Link>
           {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
           <Text style={paragraph}>{item.contentSnippet}</Text>
-        </Section>
+        </Container>
       ))}
       {hasBottomSeparator && (
         <Section>
           <Hr style={hr} />
         </Section>
       )}
-    </Section>
+    </Container>
   )
 }
 
