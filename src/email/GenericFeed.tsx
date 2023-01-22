@@ -1,3 +1,4 @@
+import { Hr } from '@react-email/hr'
 import { Link } from '@react-email/link'
 import { Section } from '@react-email/section'
 import { Text } from '@react-email/text'
@@ -7,11 +8,12 @@ import { formatDate } from '../utils/formatter'
 
 interface Props {
   feed: Output<CustomItem>
+  hasBottomSeparator: boolean
 }
 
-export default ({ feed }: Props) => {
+export default ({ feed, hasBottomSeparator }: Props) => {
   return (
-    <Section style={box}>
+    <Section style={box} key={feed.link}>
       <Text style={header}>
         <Link style={headerLink} href={feed.link}>
           {feed.title}
@@ -26,6 +28,11 @@ export default ({ feed }: Props) => {
           <Text style={paragraph}>{item.contentSnippet}</Text>
         </Section>
       ))}
+      {hasBottomSeparator && (
+        <Section>
+          <Hr style={hr} />
+        </Section>
+      )}
     </Section>
   )
 }
@@ -70,4 +77,9 @@ const paragraph = {
   lineHeight: '24px',
   textAlign: 'left' as const,
   margin: 0,
+}
+
+const hr = {
+  marginTop: '48px',
+  borderTopColor: '#f8f9fa',
 }

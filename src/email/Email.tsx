@@ -27,8 +27,8 @@ export default function Email({ feeds, itemCount, actionUrl }: Props) {
             <Text style={sectionText}>RSS to Email with {itemCount} updates</Text>
           </Section>
 
-          {feeds.map((feed) => (
-            <FeedSwitch key={feed.link} feed={feed} />
+          {feeds.map((feed, i) => (
+            <FeedSwitch key={feed.link} feed={feed} hasBottomSeparator={i < feeds.length - 1} />
           ))}
 
           <Section style={section}>

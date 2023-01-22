@@ -32,17 +32,16 @@ export default ({ feed }: Props) => {
 }
 
 const box = {
-  padding: '48px 32px 16px',
+  padding: '48px 32px 16px 17px',
   backgroundColor: '#4a525a',
 }
 
 const logo = {
   width: '240px',
-  marginLeft: '-15px',
 }
 
 const section = {
-  margin: '32px 0 48px',
+  padding: '32px 0 48px 15px',
 }
 
 const titleLink = {
