@@ -26,6 +26,7 @@ async function createServer() {
         pretty: true,
         // cron: '0 7 * * *', // Limit to the time period from previous to next cron job running
         limit: 3, // Limit to the last n posts of every feed in feeds.ts
+        actionUrl: 'http://localhost:5173',
       })
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
