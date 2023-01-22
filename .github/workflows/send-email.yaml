@@ -2,6 +2,7 @@ name: Send email
 
 permissions:
   actions: read
+  repository-projects: read
 
 # on:
 #   schedule:
