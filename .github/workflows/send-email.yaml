@@ -14,6 +14,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
@@ -21,15 +22,16 @@ jobs:
 
       - name: Last successful run
         id: last_success
-
         run: echo "LAST_SUCCESS=$(gh api -XGET repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/workflows/send-email.yaml/runs --jq '.workflow_runs[0].run_started_at' -F status=success -F per_page=1)" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - run: npm ci
-      - run: npm run email actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} lastSuccess=${{ steps.last_success.outputs.LAST_SUCCESS }}
 
-      - name: File Existence
+      - name: Create email
+        run: npm run email actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} lastSuccess=${{ steps.last_success.outputs.LAST_SUCCESS }}
+
+      - name: Check email exists
         id: check_email
         uses: andstor/file-existence-action@v2.0.0
         with:
