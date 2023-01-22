@@ -1,12 +1,24 @@
-import fs from 'fs'
+import express from 'express'
+import { readFileSync, writeFileSync } from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import express from 'express'
 import { createServer as createViteServer } from 'vite'
 
 const port = 5173
+const cachePath = './cache.json'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
+
+// Using cache to reload parsed feeds from disk instead of remote
+// Since every change of the email is a full render it feels wasteful retrieving the RSS
+const getCache = () => {
+  try {
+    let cache = readFileSync(cachePath, 'utf-8')
+    return JSON.parse(cache)
+  } catch {
+    return
+  }
+}
 
 async function createServer() {
   const app = express()
@@ -22,12 +34,14 @@ async function createServer() {
     try {
       const { renderEmail } = await vite.ssrLoadModule('/src/renderEmail.tsx')
 
-      const { html } = await renderEmail({
+      const { html, feeds } = await renderEmail({
         pretty: true,
-        // cron: '0 7 * * *', // Limit to the time period from previous to next cron job running
         limit: 3, // Limit to the last n posts of every feed in feeds.ts
         actionUrl: 'http://localhost:5173',
+        cache: getCache(),
       })
+
+      writeFileSync(cachePath, JSON.stringify(feeds), { flag: 'w' })
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
     } catch (e) {
@@ -40,7 +54,7 @@ async function createServer() {
     const url = req.originalUrl
 
     try {
-      let template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
+      let template = readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8')
       template = await vite.transformIndexHtml(url, template)
 
       res.status(200).set({ 'Content-Type': 'text/html' }).end(template)

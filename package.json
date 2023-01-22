@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node server",
+    "clean": "rm -rf dist cache.json",
+    "dev": "npm run clean && node server",
     "email": "node email",
     "build": "prettier --check . && tsc",
     "format": "prettier --write ."
@@ -22,7 +23,7 @@
     "@react-email/render": "0.0.6",
     "@react-email/section": "^0.0.1",
     "@react-email/text": "^0.0.2",
-    "cron-parser": "^4.7.1",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.7.0",
