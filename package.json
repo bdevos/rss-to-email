@@ -11,7 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@react-email/button": "^0.0.4",
+    "@react-email/button": "^0.0.5",
     "@react-email/container": "^0.0.4",
     "@react-email/head": "^0.0.2",
     "@react-email/heading": "^0.0.5",
