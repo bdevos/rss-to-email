@@ -1,8 +1,8 @@
 name: Send email
 
-permissions:
-  actions: read
-  repository-projects: read
+# permissions:
+#   actions: read
+#   repository-projects: read
 
 # on:
 #   schedule:
