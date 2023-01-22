@@ -1,11 +1,11 @@
 name: Send email
 
-on:
-  schedule:
-    - cron: '0 6 * * *'
+# on:
+#   schedule:
+#     - cron: '0 6 * * *'
 
 # If uncommented run on every push to every branch for easier debugging
-# on: push
+on: push
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
 
       - name: Last successful run
         id: last_success
-        run: echo "LAST_SUCCESS=$(gh api -XGET repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/workflows/send-email.yaml/runs --jq '.workflow_runs[0].run_started_at' -F status=success -F per_page=1)" >> $GITHUB_OUTPUT
+        run: echo "LAST_SUCCESS=$(gh api -XGET repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/workflows/${{ github.job_workflow_sha }}/runs --jq '.workflow_runs[0].run_started_at' -F status=success -F per_page=1)" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
