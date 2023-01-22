@@ -2,6 +2,7 @@ import { render } from '@react-email/render'
 import Parser, { Output } from 'rss-parser'
 import { feeds } from './feeds'
 import Email from './email/Email'
+import Stripe from './email/Stripe'
 import { filterItemsFromFeed, getItemCount } from './utils/filter'
 import dayjs from 'dayjs'
 
