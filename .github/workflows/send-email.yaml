@@ -1,9 +1,5 @@
 name: Send email
 
-# permissions:
-#   actions: read
-#   repository-projects: read
-
 # on:
 #   schedule:
 #     - cron: '0 7 * * *'
@@ -33,27 +29,27 @@ jobs:
       - name: Show last successful run
         run: echo "Last successful run is ${{ steps.last_success.outputs.LAST_SUCCESS }}"
 
-      # - run: npm ci
-      # - run: npm run email -- actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} cron='0 7 * * *'
+      - run: npm ci
+      - run: npm run email actionUrl=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }} lastSuccess=${{ steps.last_success.outputs.LAST_SUCCESS }}'
 
-      # - name: File Existence
-      #   id: check_email
-      #   uses: andstor/file-existence-action@v2.0.0
-      #   with:
-      #     files: 'dist/email.html'
+      - name: File Existence
+        id: check_email
+        uses: andstor/file-existence-action@v2.0.0
+        with:
+          files: 'dist/email.html'
 
-      # - name: Send email
-      #   if: steps.check_email.outputs.files_exists == 'true'
-      #   uses: dawidd6/action-send-mail@v3.7.1
-      #   with:
-      #     server_address: smtp.fastmail.com
-      #     server_port: 587
+      - name: Send email
+        if: steps.check_email.outputs.files_exists == 'true'
+        uses: dawidd6/action-send-mail@v3.7.1
+        with:
+          server_address: smtp.fastmail.com
+          server_port: 587
 
-      #     username: ${{ secrets.MAIL_USERNAME }}
-      #     password: ${{ secrets.MAIL_PASSWORD }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
 
-      #     subject: RSS to Email
-      #     to: ${{ secrets.MAIL_TO }}
-      #     from: ${{ secrets.MAIL_USERNAME }}
+          subject: RSS to Email
+          to: ${{ secrets.MAIL_TO }}
+          from: ${{ secrets.MAIL_USERNAME }}
 
-      #     html_body: file://dist/email.html
+          html_body: file://dist/email.html

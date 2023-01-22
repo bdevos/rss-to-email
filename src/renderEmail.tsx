@@ -2,8 +2,8 @@ import { render } from '@react-email/render'
 import Parser, { Output } from 'rss-parser'
 import { feeds } from './feeds'
 import Email from './email/Email'
-import { cronToEarliestDate } from './utils/cron'
 import { filterItemsFromFeed, getItemCount } from './utils/filter'
+import dayjs from 'dayjs'
 
 // rss-parser has this sorta funky parsing when `keepArray: true` is set
 export interface ItemLink {
@@ -20,6 +20,8 @@ export type CustomItem = {
   links: ItemLink[]
 }
 
+const ITEMS_ON_INITIAL_RUN = 3
+
 const parser: Parser = new Parser<{}, CustomItem>({
   customFields: {
     item: [
@@ -31,13 +33,33 @@ const parser: Parser = new Parser<{}, CustomItem>({
 
 interface Props {
   actionUrl?: string
-  cron?: string
+  cache?: Output<CustomItem>[]
+  lastSuccess?: string
   limit?: number
   pretty?: boolean
-  cache?: Output<CustomItem>[]
 }
 
-const parseFeeds = async (earliestDate: Date | undefined, limit?: number) => {
+const parseLastSuccess = (lastSuccess: string | undefined) => {
+  if (lastSuccess) {
+    const parsed = dayjs(lastSuccess)
+
+    if (parsed.isValid()) {
+      return {
+        from: parsed,
+        initialRun: false,
+      }
+    }
+  }
+
+  return {
+    from: dayjs().subtract(7, 'days'),
+    initialRun: true,
+  }
+}
+
+const parseFeeds = async (lastSuccess: string | undefined, limit?: number) => {
+  const { from, initialRun } = parseLastSuccess(lastSuccess)
+
   const settledFeeds = await Promise.allSettled(feeds.map((feed) => parser.parseURL(feed)))
 
   const fulfilledFeeds = settledFeeds.reduce((acc, current, i) => {
@@ -50,13 +72,11 @@ const parseFeeds = async (earliestDate: Date | undefined, limit?: number) => {
     }
   }, [] as Output<CustomItem>[])
 
-  return filterItemsFromFeed(fulfilledFeeds, earliestDate, limit)
+  return filterItemsFromFeed(fulfilledFeeds, from, limit ?? initialRun ? ITEMS_ON_INITIAL_RUN : undefined)
 }
 
-export async function renderEmail({ pretty = false, cron, limit, actionUrl, cache }: Props) {
-  const earliestDate = cronToEarliestDate(cron)
-
-  const parsedFeeds = cache ?? (await parseFeeds(earliestDate, limit))
+export async function renderEmail({ actionUrl, cache, lastSuccess, limit, pretty = false }: Props) {
+  const parsedFeeds = cache ?? (await parseFeeds(lastSuccess, limit))
 
   const itemCount = getItemCount(parsedFeeds)
 
