@@ -1,5 +1,8 @@
 name: Send email
 
+permissions:
+  actions: read
+
 # on:
 #   schedule:
 #     - cron: '0 7 * * *'
