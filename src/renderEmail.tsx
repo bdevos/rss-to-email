@@ -34,11 +34,10 @@ interface Props {
   cron?: string
   limit?: number
   pretty?: boolean
+  cache?: Output<CustomItem>[]
 }
 
-export async function renderEmail({ pretty = false, cron, limit, actionUrl }: Props) {
-  const earliestDate = cronToEarliestDate(cron)
-
+const parseFeeds = async (earliestDate: Date | undefined, limit?: number) => {
   const settledFeeds = await Promise.allSettled(feeds.map((feed) => parser.parseURL(feed)))
 
   const fulfilledFeeds = settledFeeds.reduce((acc, current, i) => {
@@ -51,13 +50,19 @@ export async function renderEmail({ pretty = false, cron, limit, actionUrl }: Pr
     }
   }, [] as Output<CustomItem>[])
 
-  const filteredFeeds = filterItemsFromFeed(fulfilledFeeds, earliestDate, limit)
+  return filterItemsFromFeed(fulfilledFeeds, earliestDate, limit)
+}
 
-  const itemCount = getItemCount(filteredFeeds)
+export async function renderEmail({ pretty = false, cron, limit, actionUrl, cache }: Props) {
+  const earliestDate = cronToEarliestDate(cron)
 
-  const html = render(<Email feeds={filteredFeeds} itemCount={itemCount} actionUrl={actionUrl} />, {
+  const parsedFeeds = cache ?? (await parseFeeds(earliestDate, limit))
+
+  const itemCount = getItemCount(parsedFeeds)
+
+  const html = render(<Email feeds={parsedFeeds} itemCount={itemCount} actionUrl={actionUrl} />, {
     pretty,
   })
 
-  return { html, itemCount }
+  return { html, itemCount, feeds: parsedFeeds }
 }
