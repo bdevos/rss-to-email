@@ -13,15 +13,15 @@ Thank you ChatGPT for writing the above introduction :wink:
 ## Getting started
 
 1. [Fork](../../fork) this repository
-2. Update [feeds.ts](src/feeds.ts) to your favorite RSS feed(s)
+2. Update [feeds.ts](src/feeds.ts) with your favorite RSS feed(s)
 3. Update the [cron schedule](.github/workflows/send-email.yaml#L5) in the workflow file
 4. Add the following [repository variables](../../settings/variables/actions) in settings:
-   - `SMTP_SERVER` for example: smtp.fastmail.com
+   - `SMTP_SERVER` for example: smtp.gmail.com
    - `SMTP_PORT` for example: 587
 5. Add the following [repository secrets](../../settings/secrets/actions) in settings:
    - `MAIL_TO` the mail address to send the email to
-   - `SMTP_PASSWORD`
    - `SMTP_USERNAME`
+   - `SMTP_PASSWORD`
 6. Done :muscle:
 
 | :warning: | The above variables and secrets can also be changed directly in the [workflow](.github/workflows/send-email.yaml), but be aware that if your repo is public that this could expose your credentials. |
@@ -40,11 +40,24 @@ npm run dev
 
 :fire: your data stays in your own Github account
 
-:snowflake: fully customize the email
+:snowflake: fully customizable email
 
 :date: receive the updates when and where you want
 
 :poop: might have to do some tweaking
+
+## Cron
+
+Use [crontab guru](https://crontab.guru/) to play around with the cron schedule that works best for you.
+
+Some example schedules:
+
+| cron             | description                                     |
+| ---------------- | ----------------------------------------------- |
+| 0 6 \* \* \*     | every day at 06:00                              |
+| 0 9-18 \* \* 1-5 | monday to friday every hour from 09:00 to 18:00 |
+| 0 10 \* \* 6     | saturday at 10:00                               |
+| 0/15 \* \* \* \* | every 15 minutes                                |
 
 ## Screenshot
 
