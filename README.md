@@ -16,6 +16,13 @@ Scheduled RSS to Email with Github Actions
    - MAIL_USERNAME
 6. Done 💪
 
+If you want to view and modify the email that will be send, there is a local dev server. To try it:
+
+```bash
+npm install
+npm run dev
+```
+
 ## Pro and cons
 
 🔥 bla
