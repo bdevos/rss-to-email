@@ -3,7 +3,7 @@ import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
-import { CustomItem, ItemLink } from '../renderEmail'
+import { CustomItem, ItemLink } from '../parseFeeds'
 
 interface Props {
   feed: Output<CustomItem>

@@ -5,38 +5,62 @@ import { Link } from '@react-email/link'
 import { Preview } from '@react-email/preview'
 import { Section } from '@react-email/section'
 import { Text } from '@react-email/text'
-import { Output } from 'rss-parser'
+import dayjs, { Dayjs } from 'dayjs'
 import FeedSwitch from './FeedSwitch'
 import { formatDate } from '../utils/formatter'
-import { CustomItem } from '../renderEmail'
-import { Heading } from '@react-email/heading'
-import { Column } from '@react-email/column'
+import { SettledFeed } from '../parseFeeds'
+import Rejected from './Rejected'
 
 interface Props {
-  feeds: Output<CustomItem>[]
+  feeds: SettledFeed[]
   itemCount: number
-  actionUrl?: string
+  actionUrl: string
+  from: Dayjs
+  initialRun: boolean
 }
 
-export default function Email({ feeds, itemCount, actionUrl }: Props) {
+const parseIntro = (initialRun: boolean, itemCount: number, from: Dayjs) => {
+  if (initialRun) {
+    return `First edition with ${itemCount} updates`
+  }
+
+  const hours = dayjs().diff(from, 'hours')
+  const days = Math.floor(hours / 24)
+
+  if (days === 1) {
+    return `${itemCount} updates since yesterday`
+  } else if (days > 0) {
+    return `${itemCount} updates in the last ${days} days`
+  } else if (hours === 1) {
+    return `${itemCount} updates in the last hour`
+  }
+  return `${itemCount} updates in the last ${hours} hours`
+}
+
+export default function Email({ feeds, itemCount, actionUrl, from, initialRun }: Props) {
+  const intro = parseIntro(initialRun, itemCount, from)
+
   return (
     <Html>
       <Head />
-      <Preview children={`RSS to Email with ${itemCount} updates`} />
+      <Preview children={intro} />
       <Section style={main}>
         <Container style={container}>
-          <Text style={sectionText}>RSS to Email with {itemCount} updates</Text>
+          <Text style={section}>{intro}</Text>
 
-          {feeds.map((feed, i) => (
-            <FeedSwitch key={feed.link} feed={feed} hasBottomSeparator={i < feeds.length - 1} />
-          ))}
+          {feeds.map((feed, i) => {
+            switch (feed.status) {
+              case 'fulfilled':
+                return <FeedSwitch key={feed.value.link} feed={feed.value} hasBottomSeparator={i < feeds.length - 1} />
+              case 'rejected':
+                return <Rejected key={feed.feed} feed={feed.feed} reason={feed.reason} />
+            }
+          })}
 
-          <Text style={sectionText}>
-            {actionUrl && (
-              <Link style={link} href={actionUrl}>
-                {formatDate(new Date().toISOString())}
-              </Link>
-            )}
+          <Text style={section}>
+            <Link style={link} href={actionUrl}>
+              {formatDate(new Date().toISOString())}
+            </Link>
           </Text>
         </Container>
       </Section>
@@ -54,9 +78,7 @@ const container = {
   padding: '0',
 }
 
-const section = {}
-
-const sectionText = {
+const section = {
   color: '#495057',
   fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
   fontSize: '12px',
@@ -68,5 +90,6 @@ const sectionText = {
 
 const link = {
   color: '#495057',
-  textDecoration: 'underline',
+  textDecoration: 'none',
+  marginLeft: '8px',
 }

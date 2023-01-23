@@ -36,8 +36,6 @@ async function createServer() {
 
       const { html, feeds } = await renderEmail({
         pretty: true,
-        limit: 3, // Limit to the last n posts of every feed in feeds.ts
-        actionUrl: 'http://localhost:5173',
         cache: getCache(),
       })
 
