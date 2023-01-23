@@ -40,4 +40,6 @@ npm run dev
 
 ## Screenshot
 
+Below is a sample of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has the default style.
+
 ![Example of the email](screenshot.png)
