@@ -14,7 +14,9 @@ Scheduled RSS to Email with Github Actions
    - `MAIL_TO`
    - `SMTP_PASSWORD`
    - `SMTP_USERNAME`
-6. Done 💪
+6. Done :muscle:
+
+> :warning: the above variables and secrets can also be changed in the workflow, but be aware that if you forked this repo and it is still public that this could expose your smtp credentials!
 
 The project includes a local dev server to view and modify the email template based on your RSS feeds.
 
@@ -25,6 +27,6 @@ npm run dev
 
 ## Pro and cons
 
-🔥 bla
+:fire: bla
 
-💩 bla
+:poop: bla
