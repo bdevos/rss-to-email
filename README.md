@@ -1,6 +1,10 @@
 # RSS to Email
 
-Scheduled RSS to Email with Github Actions
+Keep up to date with your favorite RSS feeds at the time and interval you specify. Everything run inside your own Github account, so you are not turned into the product.
+
+This project combines the simplicity of creating custom emails with React and Typescript provided by the [react-email](https://github.com/resendlabs/react-email) project, with the ability to schedule updates based on a simple Github Actions workflow.
+
+Based on the success of the last workflow run, it will determine which updates available on the configured RSS feeds the project will have to send you.
 
 [Introductory post on my blog](https://appjeniksaan.nl)
 
