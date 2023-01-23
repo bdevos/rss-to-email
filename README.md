@@ -66,6 +66,6 @@ Because the workflow looks at the previous successful run to determine which pos
 
 ## Screenshot
 
-Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has the default style.
+Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has a generic style.
 
 ![Example of the email](screenshot.png)
