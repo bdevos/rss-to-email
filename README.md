@@ -16,7 +16,8 @@ Scheduled RSS to Email with Github Actions
    - `SMTP_USERNAME`
 6. Done :muscle:
 
-> :warning: the above variables and secrets can also be changed in the workflow, but be aware that if you forked this repo and it is still public that this could expose your smtp credentials!
+| :warning: | the above variables and secrets can also be changed in the workflow, but be aware that if you forked this repo and it is still public that this could expose your smtp credentials! |
+| :-------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 The project includes a local dev server to view and modify the email template based on your RSS feeds.
 
