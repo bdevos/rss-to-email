@@ -12,20 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     # permissions: read-all
 
-    permissions:
-      actions: read
-      # checks: read|write|none
-      # contents: read|write|none
-      deployments: read
-      # id-token: read|write|none
-      # issues: read|write|none
-      # discussions: read|write|none
-      packages: read
-      # pages: read|write|none
-      # pull-requests: read|write|none
-      repository-projects: read
-      # security-events: read|write|none
-      statuses: read
+    # permissions:
+    #   actions: read
+    #   # checks: read|write|none
+    #   # contents: read|write|none
+    #   deployments: read
+    #   # id-token: read|write|none
+    #   # issues: read|write|none
+    #   # discussions: read|write|none
+    #   packages: read
+    #   # pages: read|write|none
+    #   # pull-requests: read|write|none
+    #   repository-projects: read
+    #   # security-events: read|write|none
+    #   statuses: read
 
     steps:
       - uses: actions/checkout@v3
