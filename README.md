@@ -2,17 +2,17 @@
 
 Scheduled RSS to Email with Github Actions
 
-[Introductory post](https://appjeniksaan.nl)
+[Introductory post on my blog](https://appjeniksaan.nl)
 
 ## Getting started
 
 1. [Fork](../../fork) this repository
 2. Update [feeds.ts](src/feeds.ts) to your favorite RSS feed(s)
 3. Update the [cron schedule](.github/workflows/send-email.yaml#L5) in the workflow file
-4. Add the following [variables](../../settings/variables/actions) in settings:
+4. Add the following [repository variables](../../settings/variables/actions) in settings:
    - `SMTP_SERVER` for example: smtp.fastmail.com
    - `SMTP_PORT` for example: 587
-5. Add the following [secrets](../../settings/secrets/actions) in settings:
+5. Add the following [repository secrets](../../settings/secrets/actions) in settings:
    - `MAIL_TO` the mail address to send the email to
    - `SMTP_PASSWORD`
    - `SMTP_USERNAME`
