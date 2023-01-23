@@ -29,10 +29,13 @@ Thank you ChatGPT for writing the above introduction :wink:
 
 ## Local dev server
 
-The project includes a local dev server to view and modify the email template based on your RSS feeds.
+This project includes a local dev server to view and modify the email template based on your RSS feeds.
+
+Start the dev server:
 
 ```bash
 npm install
+
 npm run dev
 ```
 
