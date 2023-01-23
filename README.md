@@ -30,9 +30,11 @@ npm run dev
 
 ## Pro and cons
 
-:fire: your data stays in your own Github
+:fire: your data stays in your own Github account
 
-:fire: you can fully customize the email you will receive and when you want to be updated
+:snowflake: fully customize the email
+
+:date: receive the updates when and where you want
 
 :poop: might have to do some tweaking
 
