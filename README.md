@@ -6,7 +6,7 @@ This project allows you to set up custom email updates based on the RSS feeds yo
 
 Say goodbye to constantly checking for updates, and hello to staying informed on your own schedule.
 
-Thank you ChatGPT for writing the above introduction :wink:
+Thank you ChatGPT for writing the above introduction :astonished:
 
 [Introductory post on my blog](https://appjeniksaan.nl)
 
