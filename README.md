@@ -1,10 +1,10 @@
 # RSS to Email
 
-Keep up to date with your favorite RSS feeds at the time and interval you specify. Everything run inside your own Github account, so you are not turned into the product.
+Keep up to date with your favorite RSS feeds at the time and interval you specify. Everything runs inside your own Github account, so you are not turned into the product.
 
 This project combines the simplicity of creating custom emails with React and Typescript provided by the [react-email](https://github.com/resendlabs/react-email) project, with the ability to schedule updates based on a simple Github Actions workflow.
 
-Based on the success of the last workflow run, it will determine which updates available on the configured RSS feeds the project will have to send you.
+Updates are based on the success of the previous run, so you can harness the power of cron to send updates every week or every hour, you decide.
 
 [Introductory post on my blog](https://appjeniksaan.nl)
 
