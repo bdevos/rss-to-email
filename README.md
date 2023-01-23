@@ -73,9 +73,9 @@ Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) 
 ## Build on top of
 
 - [react-email](https://github.com/resendlabs/react-email)\
-  This project is what triggered me to create this repo. It is still very beta, but if we can ditch all the clunky specialized tools for creating ok-ish email layouts and replace them with a React / Typescript based solution, that will be great.
+  This project is what triggered me to create this repo. It is still very beta, but if we can ditch all the clunky specialized tools for creating email layouts and replace them with a React / Typescript based solution :heart:
 - [vite](https://vitejs.dev/)\
-  For rendering and the dev server, HMR is :fire:
+  For rendering and the dev server. Had to do some hacking to get it working well with HMR and my cache implementation is :poop:. But Vite itself is :fire:
 - [rss-parser](https://github.com/rbren/rss-parser)\
   For parsing the RSS feeds, should hopefully work with most RSS feeds. Had to do some small tweaking for the Daring Fireball feed
 - [dawidd6/action-send-mail](https://github.com/dawidd6/action-send-mail)\
