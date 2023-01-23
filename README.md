@@ -2,8 +2,6 @@
 
 Scheduled RSS to Email with Github Actions
 
-![Example of the email](screenshot.png)
-
 ## Getting started
 
 1. [Fork](../../fork) this repository
@@ -35,3 +33,7 @@ npm run dev
 :fire: bla
 
 :poop: bla
+
+## Screenshot
+
+![Example of the email](screenshot.png)
