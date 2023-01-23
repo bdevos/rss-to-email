@@ -15,17 +15,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Use Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'npm'
-
       - name: Last successful run
         id: last_success
         run: echo "LAST_SUCCESS=$(gh api -XGET repos/${{ github.repository_owner }}/${{ github.event.repository.name }}/actions/workflows/send-email.yaml/runs --jq '.workflow_runs[0].run_started_at' -F status=success -F per_page=1)" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
 
       - run: npm ci
 
