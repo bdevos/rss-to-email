@@ -30,9 +30,11 @@ npm run dev
 
 ## Pro and cons
 
-:fire: bla
+:fire: your data stays in your own Github
 
-:poop: bla
+:fire: you can fully customize the email you will receive and when you want to be updated
+
+:poop: might have to do some tweaking
 
 ## Screenshot
 
