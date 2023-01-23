@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "clean": "rm -rf dist cache.json",
+    "clean": "rimraf dist cache.json",
     "dev": "npm run clean && node server",
     "email": "node email",
     "build": "prettier --check . && tsc",
@@ -36,6 +36,7 @@
     "@vitejs/plugin-react": "3.0.1",
     "express": "4.18.2",
     "prettier": "2.8.3",
+    "rimraf": "4.1.1",
     "typescript": "4.9.4",
     "vite": "4.0.4"
   }
