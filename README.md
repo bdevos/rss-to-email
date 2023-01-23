@@ -11,13 +11,13 @@ Scheduled RSS to Email with Github Actions
    - `SMTP_SERVER` for example: smtp.fastmail.com
    - `SMTP_PORT` for example: 587
 5. Add the following [secrets](../../settings/secrets/actions) in settings:
-   - `MAIL_TO`
+   - `MAIL_TO` the mail address to send the email to
    - `SMTP_PASSWORD`
    - `SMTP_USERNAME`
 6. Done :muscle:
 
-| :warning: | The above variables and secrets can also be changed directly in the [workflow](.github/workflows/send-email.yaml), but be aware that if your repo is public that this could expose your credentials |
-| :-------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| :warning: | The above variables and secrets can also be changed directly in the [workflow](.github/workflows/send-email.yaml), but be aware that if your repo is public that this could expose your credentials. |
+| :-------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
 ## Local dev server
 
