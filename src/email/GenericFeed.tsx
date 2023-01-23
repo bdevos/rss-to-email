@@ -4,7 +4,7 @@ import { Link } from '@react-email/link'
 import { Section } from '@react-email/section'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
-import { CustomItem } from '../renderEmail'
+import { CustomItem } from '../parseFeeds'
 import { formatDate } from '../utils/formatter'
 
 interface Props {

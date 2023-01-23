@@ -1,5 +1,5 @@
 import { Output } from 'rss-parser'
-import { CustomItem } from '../renderEmail'
+import { CustomItem } from '../parseFeeds'
 import DaringFireballFeed from './DaringFireballFeed'
 import GenericFeed from './GenericFeed'
 
