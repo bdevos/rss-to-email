@@ -2,6 +2,8 @@
 
 Scheduled RSS to Email with Github Actions
 
+[Introductory post](https://appjeniksaan.nl)
+
 ## Getting started
 
 1. [Fork](../../fork) this repository
@@ -40,6 +42,6 @@ npm run dev
 
 ## Screenshot
 
-Below is a sample of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has the default style.
+Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has the default style.
 
 ![Example of the email](screenshot.png)
