@@ -13,7 +13,7 @@ interface Props {
 }
 
 const ITEMS_ON_INITIAL_RUN = 3
-const FALLBACK_ACTION_URL = 'http://github.com/bdevos/rss-to-email/'
+const FALLBACK_ACTION_URL = 'https://github.com/bdevos/rss-to-email'
 
 export async function renderEmail({ actionUrl = FALLBACK_ACTION_URL, cache, lastSuccess, limit, pretty = false }: Partial<Props>) {
   const { from, initialRun } = parseLastSuccess(lastSuccess)

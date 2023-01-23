@@ -8,9 +8,8 @@ const FeedCacheHmr = () => ({
   name: 'feed-cache-hmr',
   enforce: 'pre' as const,
   handleHotUpdate({ file }) {
+    // If the feeds.ts file is updated, remove the cached version
     if (file.endsWith('src/feeds.ts') && existsSync(cachePath)) {
-      // If the feeds.ts file is updated, remove the cached version
-      console.log('REMOVE CACHE!')
       unlinkSync(cachePath)
     }
   },

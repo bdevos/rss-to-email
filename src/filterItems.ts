@@ -24,7 +24,7 @@ export const filterItemsFromFeed = (feeds: SettledFeed[], from: Dayjs, limit?: n
   // At this point we have no updated items and one or more failed feeds
   filteredFeeds.forEach((feed) => {
     if (feed.status === 'rejected') {
-      console.log(`Feed ${feed.feed} failed, reason: ${feed.reason}`)
+      console.error(`Feed ${feed.feed} failed, reason: ${feed.reason}`)
     }
   })
 

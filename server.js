@@ -34,12 +34,6 @@ async function createServer() {
     try {
       const { renderEmail } = await vite.ssrLoadModule('/src/renderEmail.tsx')
 
-      if (import.meta.hot) {
-        import.meta.hot.accept('*', (newFoo) => {
-          console.log('TSNEIRNTIRS?')
-        })
-      }
-
       const { html, feeds } = await renderEmail({
         pretty: true,
         cache: getCache(),
