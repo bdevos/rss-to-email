@@ -62,6 +62,8 @@ Some example schedules:
 | 0 10 \* \* 6     | saturday at 10:00                               |
 | 0/15 \* \* \* \* | every 15 minutes                                |
 
+Because the workflow looks at the previous successful run to determine which posts to send you, you can also disable the workflow by hand and pickup again later. There might be a limit to the amount of posts in a single RSS feed.
+
 ## Screenshot
 
 Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has the default style.
