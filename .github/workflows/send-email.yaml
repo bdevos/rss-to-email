@@ -23,7 +23,7 @@ jobs:
       # packages: read|write|none
       # pages: read|write|none
       # pull-requests: read|write|none
-      # repository-projects: read|write|none
+      repository-projects: read
       # security-events: read|write|none
       statuses: read
 
