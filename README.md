@@ -69,3 +69,10 @@ Because the workflow looks at the previous successful run to determine which pos
 Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has a generic style.
 
 ![Example of the email](screenshot.png)
+
+## Build on top of
+
+- [dawidd6/action-send-mail](https://github.com/dawidd6/action-send-mail)
+  To do bla
+- [andstor/file-existence-action](https://github.com/andstor/file-existence-action)
+  to do other stuff
