@@ -73,8 +73,12 @@ Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) 
 ## Build on top of
 
 - [react-email](https://github.com/resendlabs/react-email)\
-  this
-- [dawidd6/action-send-mail](https://github.com/dawidd6/action-send-mail)
-  To do bla
-- [andstor/file-existence-action](https://github.com/andstor/file-existence-action)
-  to do other stuff
+  This project is what triggered me to create this repo. It is still very beta, but if we can ditch all the clunky specialized tools for creating ok-ish email layouts and replace them with a React / Typescript based solution, that will be great.
+- [vite](https://vitejs.dev/)\
+  For rendering and the dev server, HMR is :fire:
+- [rss-parser](https://github.com/rbren/rss-parser)\
+  For parsing the RSS feeds, should hopefully work with most RSS feeds. Had to do some small tweaking for the Daring Fireball feed
+- [dawidd6/action-send-mail](https://github.com/dawidd6/action-send-mail)\
+  Github Action to send out emails, just bring your own SMTP provider
+- [andstor/file-existence-action](https://github.com/andstor/file-existence-action)\
+  Github Action to check if an email is generated
