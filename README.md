@@ -6,6 +6,12 @@ Say goodbye to constantly checking for updates, and hello to staying informed on
 
 [Introductory post on my blog](https://appjeniksaan.nl)
 
+## How does it work
+
+- Github workflow runs on a schedule
+- Lookup all new posts from your RSS feeds since the last successful run of the workflow
+- Send out an email with the updates through a SMTP server of your choice
+
 ## Getting started
 
 1. [Fork](../../fork) this repository
