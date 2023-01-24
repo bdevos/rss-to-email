@@ -4,13 +4,13 @@ Stay on top of your favorite RSS feeds - on your own terms. This project allows 
 
 Say goodbye to constantly checking for updates, and hello to staying informed on your own schedule.
 
-[Introductory post on my blog](https://appjeniksaan.nl)
+[Introductory post on my blog](https://appjeniksaan.nl/linked/rss-to-email-on-github-actions)
 
 ## How does it work
 
 - Github workflow runs on a schedule
-- Lookup all new posts from your RSS feeds since the last successful run of the workflow
-- Send out an email with the updates through a SMTP server of your choice
+- Workflow retrieves updates from your RSS feeds since its last successful run
+- Workflow sends the updates through a SMTP server of your choice
 
 ## Getting started
 
@@ -83,9 +83,5 @@ Rendering the email starts in the [`renderEmail`](src/renderEmail.tsx) function.
   This project is what triggered me to create this repo. It is still very beta, but if we can ditch all the clunky specialized tools for creating email layouts and replace them with a React / Typescript based solution :heart:
 - [vite](https://vitejs.dev/)\
   For rendering and the dev server. Had to do some hacking to get it working well with HMR and my cache implementation is :poop:. But Vite itself is :fire:
-- [rss-parser](https://github.com/rbren/rss-parser)\
-  For parsing the RSS feeds, should hopefully work with most RSS feeds. Had to do some small tweaking for the Daring Fireball feed
 - [dawidd6/action-send-mail](https://github.com/dawidd6/action-send-mail)\
   Github Action to send out emails, just bring your own SMTP provider
-- [andstor/file-existence-action](https://github.com/andstor/file-existence-action)\
-  Github Action to check if an email is generated
