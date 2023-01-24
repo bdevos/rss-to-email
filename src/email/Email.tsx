@@ -57,7 +57,7 @@ export default function Email({ feeds, itemCount, actionUrl, from, initialRun }:
             }
           })}
 
-          <Text style={{ ...section, ...footer }}>
+          <Text style={{ ...section, marginTop: '64px' }}>
             <Link style={link} href={actionUrl}>
               {formatDate(new Date().toISOString())}
             </Link>
@@ -86,10 +86,6 @@ const section = {
   margin: '0',
   padding: '16px 48px',
   backgroundColor: '#e9ecef',
-}
-
-const footer = {
-  marginTop: '64px',
 }
 
 const link = {
