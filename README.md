@@ -69,7 +69,7 @@ npm run dev
 
 ## How does it work
 
-Rendering the email starts in the [renderEmail function](src/renderEmail.tsx). It will retrieve and parse the feeds, and trigger rendering the email with the [Email component](src/email/Email.tsx).
+Rendering the email starts in the [renderEmail](src/renderEmail.tsx) function. It will retrieve and parse the feeds, and trigger rendering the email with the [Email](src/email/Email.tsx) component.
 
 ## Build on top of
 
