@@ -15,7 +15,7 @@ import { parseIntro } from './parseIntro'
 interface Props {
   feeds: SettledFeed[]
   itemCount: number
-  actionUrl: string
+  actionUrl: string | undefined
   from: Dayjs
   initialRun: boolean
 }
