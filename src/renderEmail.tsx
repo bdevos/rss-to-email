@@ -12,14 +12,14 @@ interface Props {
   pretty: boolean
 }
 
-const ITEMS_ON_INITIAL_RUN = 3
+const LIMIT_ITEMS_INITIAL_RUN = 3
 
 export async function renderEmail({ actionUrl, cache, lastSuccess, pretty = false }: Partial<Props>) {
   const { from, initialRun } = parseLastSuccess(lastSuccess)
 
-  const parsedFeeds = cache ?? (await parseFeeds())
+  const feeds = cache ?? (await parseFeeds())
 
-  const filteredFeeds = filterItemsFromFeed(parsedFeeds, from, initialRun ? ITEMS_ON_INITIAL_RUN : undefined)
+  const filteredFeeds = filterItemsFromFeed(feeds, from, initialRun ? LIMIT_ITEMS_INITIAL_RUN : undefined)
 
   const itemCount = getItemCount(filteredFeeds)
 
@@ -27,5 +27,5 @@ export async function renderEmail({ actionUrl, cache, lastSuccess, pretty = fals
     pretty,
   })
 
-  return { html, itemCount, feeds: parsedFeeds }
+  return { html, itemCount, feeds }
 }
