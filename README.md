@@ -1,12 +1,8 @@
 # RSS to Email
 
-Introducing a new way to stay on top of your favorite RSS feeds - on your own terms.
-
-This project allows you to set up custom email updates based on the RSS feeds you specify, all within the comfort of your own Github account. Utilizing the user-friendly interface of React and TypeScript through the [react-email](https://github.com/resendlabs/react-email) project, and the scheduling capabilities of Github Actions, you can have updates delivered at the time and frequency of your choosing. With updates based on the success of the previous run, you have the flexibility to schedule updates as frequently as every hour or as infrequently as every week.
+Stay on top of your favorite RSS feeds - on your own terms. This project allows you to set up custom email updates based on the RSS feeds you specify, all within the comfort of your own Github account.
 
 Say goodbye to constantly checking for updates, and hello to staying informed on your own schedule.
-
-Thank you ChatGPT for writing the above introduction :astonished:
 
 [Introductory post on my blog](https://appjeniksaan.nl)
 
@@ -27,17 +23,6 @@ Thank you ChatGPT for writing the above introduction :astonished:
 | :warning: | The above variables and secrets can also be changed directly in the [workflow](.github/workflows/send-email.yaml), but be aware that if your repo is public that this could expose your credentials. |
 | :-------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 
-## Local dev server
-
-This project includes a local dev server to view and modify the email template based on your RSS feeds.
-
-Start the dev server:
-
-```bash
-npm install
-npm run dev
-```
-
 ## Pro and cons
 
 :fire: your data stays in your own Github account
@@ -48,7 +33,7 @@ npm run dev
 
 :poop: might have to do some tweaking
 
-## Cron
+## Cron schedule
 
 Use [crontab guru](https://crontab.guru/) to play around with the cron schedule that works best for you.
 
@@ -70,6 +55,21 @@ Note: Github workflow runs do [not support timezones](https://github.com/orgs/co
 Below is a screenshot of how the [Daring Fireball](https://daringfireball.net/) updates use custom styling and my own blog has a generic style.
 
 ![Example of the email](screenshot.png)
+
+## Local dev server
+
+This project includes a local dev server to view and modify the email template based on your RSS feeds.
+
+Start the dev server:
+
+```bash
+npm install
+npm run dev
+```
+
+## How does it work
+
+Rendering the email starts in the [`renderEmail`](src/renderEmail.tsx) function. It will retrieve and parse the feeds, and trigger rendering the email with the [`Email`](src/email/Email.tsx) component.
 
 ## Build on top of
 

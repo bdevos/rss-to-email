@@ -1,4 +1,3 @@
-import { Dayjs } from 'dayjs'
 import Parser, { Output } from 'rss-parser'
 import { feeds } from './feeds'
 

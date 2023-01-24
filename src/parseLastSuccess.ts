@@ -17,5 +17,6 @@ export const parseLastSuccess = (lastSuccess: string | undefined) => {
     }
   }
 
+  // This might happen if the workflow ran into an error while determining the last successful run
   throw new Error(`Unknown lastSuccess value: ${lastSuccess}`)
 }
