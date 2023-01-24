@@ -21,15 +21,16 @@ export default ({ feed, reason }: Props) => {
 }
 
 const box = {
-  padding: '32px 48px',
+  padding: '16px 32px',
   backgroundColor: '#c92a2a',
 }
 
 const text = {
   color: '#fff',
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
-  fontSize: '16px',
+  fontFamily: 'Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace',
+  fontSize: '12px',
   wordBreak: 'break-word' as const,
+  margin: '16px 0',
 }
 
 const link = {

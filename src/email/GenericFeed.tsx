@@ -6,6 +6,7 @@ import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
 import { CustomItem } from '../parseFeeds'
 import { formatDate } from '../utils/formatter'
+import Summary from './Summary'
 
 interface Props {
   feed: Output<CustomItem>
@@ -26,7 +27,7 @@ export default ({ feed, hasBottomSeparator }: Props) => {
             {item.title}
           </Link>
           {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
-          <Text style={paragraph}>{item.contentSnippet}</Text>
+          {item.content && <Summary href={item.link} style={paragraph} content={item.content} />}
         </Container>
       ))}
       {hasBottomSeparator && (
@@ -39,18 +40,22 @@ export default ({ feed, hasBottomSeparator }: Props) => {
 }
 
 const box = {
-  padding: '32px 48px',
+  padding: '32px 32px 0',
 }
 
 const header = {
   color: '#212529',
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
+  fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
   fontSize: '16px',
+  margin: 0,
 }
 
 const headerLink = {
   color: '#212529',
   textDecoration: 'underline',
+  textDecorationColor: '#1098ad',
+  textDecorationStyle: 'solid' as const,
+  textUnderlineOffset: '1px',
 }
 
 const section = {
@@ -58,29 +63,27 @@ const section = {
 }
 
 const anchor = {
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
-  color: '#556cd6',
+  fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
+  color: '#095c6b',
   fontSize: '20px',
 }
 
 const date = {
   color: '#495057',
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
+  fontFamily: 'Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace',
   fontSize: '12px',
-  fontStyle: 'italic',
-  margin: 0,
+  margin: '0 0 8px',
 }
 
 const paragraph = {
   color: '#495057',
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
+  fontFamily: 'system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif',
   fontSize: '16px',
   lineHeight: '24px',
-  textAlign: 'left' as const,
   margin: 0,
 }
 
 const hr = {
-  marginTop: '48px',
-  borderTopColor: '#f8f9fa',
+  marginTop: '16px',
+  borderTopColor: '#dee2e6',
 }

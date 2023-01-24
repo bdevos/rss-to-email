@@ -1,6 +1,6 @@
 import { Output } from 'rss-parser'
 import { CustomItem } from '../parseFeeds'
-import DaringFireballFeed from './DaringFireballFeed'
+import DaringFireballFeed from './daringfireball/Feed'
 import GenericFeed from './GenericFeed'
 
 interface Props {
