@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { parse } from 'node-html-parser'
 import { Text } from '@react-email/text'
 import { Link } from '@react-email/link'
@@ -20,11 +21,15 @@ export default ({ content, href }: Props) => {
       {elements.map((element) => {
         switch (element.localName) {
           case 'p':
-            return <Text style={text}>{element.text}</Text>
+            return (
+              <Text key="p" style={text}>
+                {element.text}
+              </Text>
+            )
           case 'blockquote':
             const paragraphs = element.querySelectorAll('> p')
             return (
-              <>
+              <Fragment key="blockquote">
                 <Text style={blockquote}>{paragraphs[0].text ?? ''}</Text>
                 {blockquoteHasMore && (
                   <Text style={blockquote}>
@@ -33,7 +38,7 @@ export default ({ content, href }: Props) => {
                     </Link>
                   </Text>
                 )}
-              </>
+              </Fragment>
             )
         }
       })}
