@@ -57,7 +57,7 @@ export default function Email({ feeds, itemCount, actionUrl, from, initialRun }:
             }
           })}
 
-          <Text style={section}>
+          <Text style={{ ...section, marginTop: '64px' }}>
             <Link style={link} href={actionUrl}>
               {formatDate(new Date().toISOString())}
             </Link>
@@ -80,7 +80,7 @@ const container = {
 
 const section = {
   color: '#495057',
-  fontFamily: 'Inter, Avenir, Helvetica, Arial, sans-serif',
+  fontFamily: 'Dank Mono,Operator Mono,Inconsolata,Fira Mono,ui-monospace,SF Mono,Monaco,Droid Sans Mono,Source Code Pro,monospace',
   fontSize: '12px',
   textAlign: 'center' as const,
   margin: '0',
@@ -90,6 +90,8 @@ const section = {
 
 const link = {
   color: '#495057',
-  textDecoration: 'none',
-  marginLeft: '8px',
+  textDecoration: 'underline',
+  textDecorationColor: '#1098ad',
+  textDecorationStyle: 'solid' as const,
+  textUnderlineOffset: '1px',
 }

@@ -3,7 +3,8 @@ import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
-import { CustomItem, ItemLink } from '../parseFeeds'
+import { CustomItem, ItemLink } from '../../parseFeeds'
+import Summary from './Summary'
 
 interface Props {
   feed: Output<CustomItem>
@@ -17,23 +18,27 @@ export default ({ feed }: Props) => {
       <Link href={feed.link}>
         <Img src="https://daringfireball.net/graphics/logos/" style={logo} />
       </Link>
-      {feed.items.map((item) => (
-        <Container key={item.guid ?? item.id} style={section}>
-          <Text style={title}>
-            <Link style={titleLink} href={findRelatedLink(item.links) ?? item.link}>
-              {item.title}
-            </Link>
-          </Text>
-          <Text style={content}>{item.contentSnippet?.replaceAll('★', '')}</Text>
-        </Container>
-      ))}
+      {feed.items.map((item) => {
+        const href = findRelatedLink(item.links) ?? item.link
+        return (
+          <Container key={item.guid ?? item.id} style={section}>
+            <Text style={title}>
+              <Link style={titleLink} href={href}>
+                {item.title}
+              </Link>
+            </Text>
+            {item.content && <Summary href={href} content={item.content} />}
+          </Container>
+        )
+      })}
     </Container>
   )
 }
 
 const box = {
-  padding: '48px 48px 16px 33px',
+  padding: '32px 32px 16px 17px',
   backgroundColor: '#4a525a',
+  marginBottom: '16px',
 }
 
 const logo = {
@@ -42,6 +47,10 @@ const logo = {
 
 const section = {
   padding: '32px 0 48px 15px',
+}
+
+const title = {
+  margin: '0',
 }
 
 const titleLink = {
@@ -55,17 +64,4 @@ const titleLink = {
   fontWeight: 400,
   letterSpacing: '1.89px',
   textTransform: 'uppercase' as const,
-}
-
-const title = {
-  margin: '0 0 12px',
-}
-
-const content = {
-  fontFamily: 'Verdana, system-ui, Helvetica, sans-serif',
-  fontSize: '12px',
-  color: '#eee',
-  lineHeight: '21.6px',
-  fontWeight: 'normal',
-  margin: 0,
 }
