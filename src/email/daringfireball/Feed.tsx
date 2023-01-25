@@ -46,7 +46,7 @@ const logo = {
 }
 
 const section = {
-  padding: '32px 0 48px 15px',
+  padding: '32px 0 32px 15px',
 }
 
 const title = {
