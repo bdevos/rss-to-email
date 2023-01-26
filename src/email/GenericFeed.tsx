@@ -40,7 +40,7 @@ export default ({ feed, hasBottomSeparator }: Props) => {
 }
 
 const box = {
-  padding: '32px 32px 0',
+  padding: '32px 32px 24px',
 }
 
 const header = {
@@ -84,6 +84,6 @@ const paragraph = {
 }
 
 const hr = {
-  marginTop: '16px',
+  margin: '24px 0 0',
   borderTopColor: '#dee2e6',
 }
