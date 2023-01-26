@@ -40,7 +40,7 @@ export default function Email({ feeds, itemCount, actionUrl, from, initialRun }:
             }
           })}
 
-          <Text style={{ ...section, marginTop: '64px' }}>
+          <Text style={{ ...section }}>
             <Link style={link} href={actionUrl}>
               {formatDate(new Date().toISOString())}
             </Link>

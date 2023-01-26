@@ -36,9 +36,8 @@ export default ({ feed }: Props) => {
 }
 
 const box = {
-  padding: '32px 32px 16px 17px',
+  padding: '32px 32px 32px 17px',
   backgroundColor: '#4a525a',
-  marginBottom: '16px',
 }
 
 const logo = {
