@@ -9,7 +9,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@react-email/button": "0.0.5",
+    "@react-email/button": "0.0.6",
     "@react-email/column": "0.0.3",
     "@react-email/container": "0.0.5",
     "@react-email/head": "0.0.3",
