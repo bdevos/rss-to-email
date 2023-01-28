@@ -16,7 +16,7 @@
     "@react-email/heading": "0.0.6",
     "@react-email/hr": "0.0.3",
     "@react-email/html": "0.0.3",
-    "@react-email/img": "0.0.3",
+    "@react-email/img": "0.0.4",
     "@react-email/link": "0.0.3",
     "@react-email/preview": "0.0.4",
     "@react-email/render": "0.0.6",
