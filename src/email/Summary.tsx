@@ -6,12 +6,13 @@ import { Text } from '@react-email/text'
 interface Props {
   content: string
   href: string
-  style: CSSProperties | undefined
+  paragraphStyle: CSSProperties
+  blockquoteStyle: CSSProperties
 }
 
-export default ({ content, href, style }: Props) => {
+export default ({ content, href, paragraphStyle, blockquoteStyle }: Props) => {
   const root = parse(content)
-  const elements = root.querySelectorAll('> p')
+  const elements = root.querySelectorAll('> p, > blockquote')
 
   if (elements.length === 0) {
     return null
@@ -19,9 +20,9 @@ export default ({ content, href, style }: Props) => {
 
   return (
     <>
-      <Text style={style}>{elements[0].text}</Text>
+      <Text style={elements[0].localName === 'blockquote' ? blockquoteStyle : paragraphStyle}>{elements[0].text}</Text>
       {elements.length > 1 && (
-        <Text style={style}>
+        <Text style={paragraphStyle}>
           <Link href={href}>…</Link>
         </Text>
       )}
