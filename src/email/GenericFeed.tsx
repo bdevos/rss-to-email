@@ -27,7 +27,7 @@ export default ({ feed, hasBottomSeparator }: Props) => {
             {item.title}
           </Link>
           {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
-          {item.content && <Summary href={item.link} style={paragraph} content={item.content} />}
+          {item.content && <Summary href={item.link} paragraphStyle={paragraph} blockquoteStyle={{ ...paragraph, ...blockquote }} content={item.content} />}
         </Container>
       ))}
       {hasBottomSeparator && (
@@ -81,6 +81,11 @@ const paragraph = {
   fontSize: '16px',
   lineHeight: '24px',
   margin: 0,
+}
+
+const blockquote = {
+  paddingLeft: '12px',
+  borderLeft: '2px solid #095c6b',
 }
 
 const hr = {
