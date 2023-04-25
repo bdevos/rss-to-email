@@ -41,7 +41,7 @@ jobs:
 
       - name: Send email
         if: steps.check_email.outputs.files_exists == 'true'
-        uses: dawidd6/action-send-mail@v3.7.1
+        uses: dawidd6/action-send-mail@v3.7.2
         with:
           server_address: ${{ vars.SMTP_SERVER }}
           server_port: ${{ vars.SMTP_PORT }}
