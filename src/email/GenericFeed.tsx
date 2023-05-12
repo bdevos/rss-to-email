@@ -7,6 +7,7 @@ import { Output } from 'rss-parser'
 import { CustomItem } from '../parseFeeds'
 import { formatDate } from '../utils/formatter'
 import Summary from './Summary'
+import { parseLinks } from './parseLinks'
 
 interface Props {
   feed: Output<CustomItem>
@@ -21,15 +22,19 @@ export default ({ feed, hasBottomSeparator }: Props) => {
           {feed.title}
         </Link>
       </Text>
-      {feed.items.map((item) => (
-        <Container key={item.guid} style={section}>
-          <Link style={anchor} href={item.link}>
-            {item.title}
-          </Link>
-          {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
-          {item.content && <Summary href={item.link} paragraphStyle={paragraph} blockquoteStyle={{ ...paragraph, ...blockquote }} content={item.content} />}
-        </Container>
-      ))}
+      {feed.items.map((item) => {
+        const href = parseLinks(item.links)
+
+        return (
+          <Container key={item.guid} style={section}>
+            <Link style={anchor} href={href}>
+              {item.title}
+            </Link>
+            {item.pubDate && <Text style={date}>{formatDate(item.pubDate)}</Text>}
+            {item.content && <Summary href={href} paragraphStyle={paragraph} blockquoteStyle={{ ...paragraph, ...blockquote }} content={item.content} />}
+          </Container>
+        )
+      })}
       {hasBottomSeparator && (
         <Section>
           <Hr style={hr} />

@@ -3,14 +3,13 @@ import { Img } from '@react-email/img'
 import { Link } from '@react-email/link'
 import { Text } from '@react-email/text'
 import { Output } from 'rss-parser'
-import { CustomItem, ItemLink } from '../../parseFeeds'
+import { CustomItem } from '../../parseFeeds'
 import Summary from './Summary'
+import { parseLinks } from '../parseLinks'
 
 interface Props {
   feed: Output<CustomItem>
 }
-
-const findRelatedLink = (links: ItemLink[]) => links.map(({ $: link }) => link).find(({ rel }) => rel === 'related')?.href
 
 export default ({ feed }: Props) => {
   return (
@@ -19,7 +18,7 @@ export default ({ feed }: Props) => {
         <Img src="https://daringfireball.net/graphics/logos/" style={logo} />
       </Link>
       {feed.items.map((item) => {
-        const href = findRelatedLink(item.links) ?? item.link
+        const href = parseLinks(item.links)
         return (
           <Container key={item.guid ?? item.id} style={section}>
             <Text style={title}>
