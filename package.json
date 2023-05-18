@@ -37,6 +37,6 @@
     "prettier": "2.8.8",
     "rimraf": "5.0.1",
     "typescript": "5.0.4",
-    "vite": "4.3.7"
+    "vite": "4.3.8"
   }
 }
