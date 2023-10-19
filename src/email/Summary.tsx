@@ -20,7 +20,7 @@ export default ({ content, href, paragraphStyle, blockquoteStyle }: Props) => {
 
   return (
     <>
-      <Text style={elements[0].localName === 'blockquote' ? blockquoteStyle : paragraphStyle}>{elements[0].text}</Text>
+      <Text style={elements.at(0)?.localName === 'blockquote' ? blockquoteStyle : paragraphStyle}>{elements.at(0)?.text}</Text>
       {elements.length > 1 && (
         <Text style={paragraphStyle}>
           <Link href={href}>…</Link>

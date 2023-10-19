@@ -16,5 +16,5 @@ export const parseLinks = (links: ItemLink[]) => {
     return `${links[0]}`
   }
 
-  return hrefByRel(links, 'related') ?? hrefByRel(links, 'alternate') ?? links[0].$.href
+  return hrefByRel(links, 'related') ?? hrefByRel(links, 'alternate') ?? links.at(0)?.$.href
 }
