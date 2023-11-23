@@ -1,10 +1,11 @@
 {
   "extends": ["config:base"],
-
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@react-email"],
-      "groupName": "react-email"
+      "matchPackagePatterns": ["*"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "non-major dependencies",
+      "groupSlug": "minor-patch"
     }
   ]
 }
