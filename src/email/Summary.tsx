@@ -5,7 +5,7 @@ import { Text } from '@react-email/text'
 
 interface Props {
   content: string
-  href: string
+  href: string | undefined
   paragraphStyle: CSSProperties
   blockquoteStyle: CSSProperties
 }
