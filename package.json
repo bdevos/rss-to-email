@@ -23,7 +23,7 @@
     "@react-email/section": "0.0.11",
     "@react-email/text": "0.0.7",
     "dayjs": "1.11.10",
-    "node-html-parser": "6.1.11",
+    "node-html-parser": "6.1.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "6.21.1",
