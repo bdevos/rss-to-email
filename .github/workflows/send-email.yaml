@@ -17,7 +17,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           cache: 'npm'
 
       - name: Last successful run
@@ -33,9 +33,10 @@ jobs:
 
       - name: Check email exists
         id: check_email
-        uses: andstor/file-existence-action@v2.0.0
-        with:
-          files: 'dist/email.html'
+        run: |
+          if [ -f dist/email.html ]; then
+            echo "files_exists=true" >> $GITHUB_OUTPUT
+          fi
 
       - name: Send email
         if: steps.check_email.outputs.files_exists == 'true'
