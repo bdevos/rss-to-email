@@ -36,9 +36,9 @@ jobs:
         run: |
           if [ -f dist/email.html ]; then
             echo "files_exists=true" >> $GITHUB_OUTPUT
-            echo "### New update email created :inbox_tray:" >> $GITHUB_STEP_SUMMARY
+            echo "### New update email :inbox_tray:" >> $GITHUB_STEP_SUMMARY
           else
-            echo "### No new updates :zzz:" >> $GITHUB_STEP_SUMMARY
+            echo "### No updates since last run :zzz:" >> $GITHUB_STEP_SUMMARY
           fi
 
       - name: Send email
