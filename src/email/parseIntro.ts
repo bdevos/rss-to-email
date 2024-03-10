@@ -6,7 +6,8 @@ export const parseIntro = (initialRun: boolean, itemCount: number, from: Dayjs) 
   }
 
   const hours = dayjs().diff(from, 'hours')
-  const days = Math.floor(hours / 24)
+  // Add 1 to the hours so 23 hours also becomes 1 day
+  const days = Math.floor((hours + 1) / 24)
 
   if (days === 1) {
     return `${itemCount} updates since yesterday`
