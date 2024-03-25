@@ -30,10 +30,10 @@
     "rss-parser": "3.13.0"
   },
   "devDependencies": {
-    "@types/react": "18.2.69",
+    "@types/react": "18.2.70",
     "@types/react-dom": "18.2.22",
     "@vitejs/plugin-react": "4.2.1",
-    "express": "4.19.1",
+    "express": "4.19.2",
     "prettier": "3.2.5",
     "rimraf": "5.0.5",
     "typescript": "5.4.3",
