@@ -30,8 +30,8 @@
     "rss-parser": "3.13.0"
   },
   "devDependencies": {
-    "@types/react": "18.2.75",
-    "@types/react-dom": "18.2.24",
+    "@types/react": "18.2.77",
+    "@types/react-dom": "18.2.25",
     "@vitejs/plugin-react": "4.2.1",
     "express": "4.19.2",
     "prettier": "3.2.5",
