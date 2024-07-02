@@ -19,7 +19,7 @@
     "@react-email/img": "0.0.8",
     "@react-email/link": "0.0.8",
     "@react-email/preview": "0.0.9",
-    "@react-email/render": "0.0.15",
+    "@react-email/render": "0.0.16",
     "@react-email/section": "0.0.12",
     "@react-email/text": "0.0.8",
     "dayjs": "1.11.11",
@@ -36,7 +36,7 @@
     "express": "4.19.2",
     "prettier": "3.3.2",
     "rimraf": "5.0.7",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "vite": "5.3.2"
   }
 }
