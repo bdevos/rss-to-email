@@ -22,11 +22,11 @@
     "@react-email/render": "0.0.16",
     "@react-email/section": "0.0.12",
     "@react-email/text": "0.0.8",
-    "dayjs": "1.11.11",
+    "dayjs": "1.11.12",
     "node-html-parser": "6.1.13",
     "react": "18.3.1",
     "react-dom": "18.3.1",
-    "react-router-dom": "6.24.1",
+    "react-router-dom": "6.25.1",
     "rss-parser": "3.13.0"
   },
   "devDependencies": {
@@ -34,9 +34,9 @@
     "@types/react-dom": "18.3.0",
     "@vitejs/plugin-react": "4.3.1",
     "express": "4.19.2",
-    "prettier": "3.3.2",
+    "prettier": "3.3.3",
     "rimraf": "6.0.1",
     "typescript": "5.5.3",
-    "vite": "5.3.3"
+    "vite": "5.3.4"
   }
 }
