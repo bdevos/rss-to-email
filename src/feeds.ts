@@ -1,10 +1,7 @@
 export const feeds = [
-  // Daring Fireball
-  'https://daringfireball.net/feeds/main',
+  // GitHub Changelog
+  'https://github.blog/changelog/feed/',
 
-  // JakeArchibald.com
-  'https://jakearchibald.com/posts.rss',
-
-  // Appjeniksaan
-  'https://appjeniksaan.nl/feed.xml',
+  // VSCode Release Notes
+  'https://code.visualstudio.com/feed.xml',
 ]
