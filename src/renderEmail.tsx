@@ -23,7 +23,7 @@ export async function renderEmail({ actionUrl, cache, lastSuccess, pretty = fals
 
   const itemCount = getItemCount(filteredFeeds)
 
-  const html = render(<Email actionUrl={actionUrl} feeds={filteredFeeds} from={from} initialRun={initialRun} itemCount={itemCount} />, {
+  const html = await render(<Email actionUrl={actionUrl} feeds={filteredFeeds} from={from} initialRun={initialRun} itemCount={itemCount} />, {
     pretty,
   })
 
