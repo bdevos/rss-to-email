@@ -1,10 +1,8 @@
 export const feeds = [
-  // Daring Fireball
-  'https://daringfireball.net/feeds/main',
+  // LET Offers
+  'https://www.lowendtalk.com/categories/offers.rss',
 
-  // JakeArchibald.com
-  'https://jakearchibald.com/posts.rss',
+  // LET Domains
+  'https://www.lowendtalk.com/categories/domains.rss',
 
-  // Appjeniksaan
-  'https://appjeniksaan.nl/feed.xml',
 ]
